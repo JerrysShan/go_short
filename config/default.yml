@@ -1,0 +1,11 @@
+mysql:
+  host: 127.0.0.1:3306
+  database: test
+  user: root
+  pwd:
+
+redis:
+  host: 127.0.0.1:6379
+
+web:
+  port: 8088
