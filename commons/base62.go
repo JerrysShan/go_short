@@ -8,14 +8,14 @@ import (
 const alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 // Encode converts number to base62
-func Encode(number int) string {
+func Encode(number int64) string {
 	if number == 0 {
 		return string(alphabet[0])
 	}
 
 	chars := make([]byte, 0)
 
-	length := len(alphabet)
+	length := int64(len(alphabet))
 
 	for number > 0 {
 		result := number / length
@@ -32,7 +32,7 @@ func Encode(number int) string {
 }
 
 // Decode converts base62 token to int
-func Decode(token string) int {
+func Decode(token string) int64 {
 	number := 0
 	idx := 0.0
 	chars := []byte(alphabet)
@@ -47,5 +47,5 @@ func Decode(token string) int {
 		idx++
 	}
 
-	return number
+	return int64(number)
 }

@@ -3,7 +3,7 @@ package commons
 import "testing"
 
 func TestEncode(t *testing.T) {
-	ret := Encode(3521614606208)
+	ret := Encode(56900235584)
 	t.Log(ret)
 	t.Log(Decode(ret))
 }
