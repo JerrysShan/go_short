@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"errors"
 	"go-short/services"
 	"strconv"
 
@@ -52,6 +53,10 @@ func Redirect(c *gin.Context) {
 	url, err := services.GetUrlByToken(token)
 	if err != nil {
 		c.JSON(200, gin.H{"code": -1, "message": err.Error()})
+		return
+	}
+	if url==""{
+		c.JSON(404,gin.H{"code":-1,"message":errors.New("not found")})
 		return
 	}
 	c.Redirect(302, url)

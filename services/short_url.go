@@ -23,7 +23,7 @@ func AddShortUrl(url string, expire int64) error {
 	kv["keyword"] = su.Keyword
 	err = mysql.UpdateShortUrl(&su, kv)
 	if err == nil {
-		err = redisdao.SetShortUrl(su.Keyword, su.URL)
+		err = redisdao.SetShortUrl(su.Keyword, su.URL,time.Duration(expire))
 	}
 	return err
 }
